@@ -1,0 +1,111 @@
+---
+const readings = [
+  {
+    "title": "The Sources of Soviet Conduct",
+    "author": "George F. Kennan",
+    "publication": "Foreign Affairs",
+    "year": "1947",
+    "href": "https://www.foreignaffairs.com/russian-federation/george-kennan-sources-soviet-conduct"
+  },
+  {
+    "title": "The False Promise of International Institutions",
+    "author": "John J. Mearsheimer",
+    "publication": "International Security",
+    "year": "1994–95",
+    "href": "https://www.mearsheimer.com/wp-content/uploads/2019/07/A0021.pdf"
+  },
+  {
+    "title": "Atchafalaya",
+    "author": "John McPhee",
+    "publication": "The New Yorker",
+    "year": "1987",
+    "href": "https://www.newyorker.com/magazine/1987/02/23/atchafalaya"
+  },
+  {
+    "title": "The Tinkerings of Robert Noyce",
+    "author": "Tom Wolfe",
+    "publication": "Esquire",
+    "year": "1983",
+    "href": "https://web.stanford.edu/class/e145/2007_fall/materials/noyce.html"
+  },
+  {
+    "title": "John Muir’s Yosemite",
+    "author": "Tony Perrottet",
+    "publication": "Smithsonian",
+    "year": "2008",
+    "href": "https://www.smithsonianmag.com/history/john-muirs-yosemite-10737/"
+  }
+];
+
+const performances = [
+  { id: 'WFWLFNWmZVk', title: 'Truth', artist: 'Kamasi Washington', detail: 'Live at WFUV' },
+  { id: 'xbOlgESKbIc', title: 'Midnight in Harlem', artist: 'Tedeschi Trucks Band', detail: 'Live performance' },
+  { id: 'lTcxpEYOWQY', title: 'Ripple', artist: 'Grateful Dead', detail: 'Radio City Music Hall, 1980' },
+  { id: '0QjigLVVDCQ', title: "Franklin's Tower", artist: 'Tedeschi Trucks Band', detail: 'Live, August 1, 2025' },
+  { id: 'Odcn6qk94bs', title: "I Can't Tell You Why", artist: 'Eagles', detail: 'Official video' },
+];
+
+---
+<a class="skip-link" href="#main-content">Skip to content</a>
+<div class="page interests-page">
+  <nav class="back-link" aria-label="Return to profile"><a href="/">← Jed Solomon</a></nav>
+  <header class="page-intro"><h1>Interests</h1></header>
+  <nav class="interest-tabs" data-interest-tabs aria-label="Explore interests" role="tablist" hidden>
+    <button type="button" id="tab-readings" role="tab" aria-controls="readings" aria-selected="true" data-interest-tab="readings">Readings</button>
+    <button type="button" id="tab-listening" role="tab" aria-controls="listening-panel" aria-selected="false" tabindex="-1" data-interest-tab="listening-panel">Listening</button>
+  </nav>
+  <main id="main-content">    <section class="section reading-section" id="readings" aria-labelledby="readings-title">
+      <div class="section-title"><h2 id="readings-title">Readings</h2></div>
+      <ol class="reading-list">
+      {readings.map((item) => (
+        <li>
+          <a class="reading-row" href={item.href} target="_blank" rel="noopener noreferrer" aria-label={`${item.title} by ${item.author} (opens in a new tab)`}>
+            <span class="reading-row__copy">
+              <strong>{item.title}</strong>
+              <span class="reading-row__meta"><span>{item.author}</span><span>{item.publication} · {item.year}</span></span>
+            </span>
+            <span class="reading-row__arrow" aria-hidden="true">↗</span>
+          </a>
+        </li>
+      ))}
+    </ol>
+    </section>
+
+  <div id="listening-panel">
+  <section class="section performance" aria-labelledby="performance-title" data-performances={JSON.stringify(performances)}>
+    <div class="section-title"><h2 id="performance-title">Listening</h2>
+      <div class="archive__controls" data-performance-controls hidden>
+        <span data-performance-position>1 / {performances.length}</span>
+        <button type="button" data-performance-previous aria-label="Previous video" aria-controls="performance-screen"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M12 5l-5 5 5 5" /></svg></button>
+        <button type="button" data-performance-next aria-label="Next video" aria-controls="performance-screen"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M8 5l5 5-5 5" /></svg></button>
+      </div>
+    </div>
+    <div class="performance__screen" id="performance-screen" data-performance>
+      <button class="performance__poster" type="button" data-performance-play aria-label="Play Truth by Kamasi Washington, live at WFUV">
+        <img data-performance-image src="https://i.ytimg.com/vi/WFWLFNWmZVk/hqdefault.jpg" alt="Truth by Kamasi Washington" width="480" height="360" loading="lazy" decoding="async" />
+        <span class="performance__play" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M7 4.5 15 10l-8 5.5Z" /></svg><span>Play</span></span>
+      </button>
+    </div>
+    <p class="performance__error" data-performance-error role="status" hidden></p>
+    <div class="performance__caption"><div aria-live="polite" aria-atomic="true"><h3 data-performance-title>Truth</h3><p data-performance-artist>Kamasi Washington</p><p class="performance__detail" data-performance-detail>Live at WFUV</p></div><a data-performance-external href="https://www.youtube.com/watch?v=WFWLFNWmZVk" target="_blank" rel="noreferrer" aria-label="Watch Truth on YouTube">Watch externally ↗</a></div>
+    <noscript><ul>{performances.slice(1).map((item) => <li><a href={`https://www.youtube.com/watch?v=${item.id}`} target="_blank" rel="noreferrer">{item.artist} — {item.title}</a></li>)}</ul></noscript>
+  </section>
+
+  <section class="section listening" aria-labelledby="listening-title"><h2 id="listening-title">Live radio</h2>      <div class="station-player" data-station-player>
+        <span class="station-player__status" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="station-player__identity"><strong>WWOZ 90.7 FM</strong><span>New Orleans jazz</span></span>
+        <audio preload="none" src="https://wwoz-sc.streamguys1.com/wwoz-hi.mp3"></audio>
+        <button type="button" data-station-toggle aria-label="Play WWOZ 90.7 FM" aria-pressed="false">
+          <svg class="station-play" viewBox="0 0 20 20" aria-hidden="true"><path d="M7 4.5 15 10l-8 5.5Z" /></svg>
+          <svg class="station-pause" viewBox="0 0 20 20" aria-hidden="true"><path d="M7 5v10M13 5v10" /></svg>
+          <span class="station-label" data-station-label>Play</span>
+        </button>
+        <span class="station-player__message" data-station-message role="status"></span>
+        <noscript><a href="https://www.wwoz.org/listen/player/" target="_blank" rel="noreferrer">Listen on WWOZ</a></noscript>
+      </div>
+</section>
+  </div>
+  </main>
+  <footer class="page-footer"><a href="/">Back to profile</a><a href="https://www.linkedin.com/in/jed-solomon/" target="_blank" rel="noreferrer">LinkedIn ↗</a></footer>
+</div>
+<script>import '../scripts/elite-interactions';</script>

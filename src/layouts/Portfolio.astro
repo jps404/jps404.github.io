@@ -1,0 +1,31 @@
+---
+interface Props { title?: string; description?: string; path?: string }
+const { title = 'Jed Solomon', description = 'Politics and international relations at Tulane University. Experience in strategic communications and legal research.', path = '/' } = Astro.props;
+const canonical = new URL(path, Astro.site);
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {import.meta.env.DEV && <script is:inline>
+      // YouTube rejects numeric loopback origins. Use a real hostname for local embeds.
+      if (window.location.hostname === '127.0.0.1' || window.location.hostname === '[::1]') {
+        const preview = new URL(window.location.href);
+        preview.hostname = 'localhost';
+        window.location.replace(preview.href);
+      }
+    </script>}
+    <meta name="theme-color" content="#fcfcfc" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/icon-a.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/a-text-ac26ddb0.woff2" as="font" type="font/woff2" crossorigin />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:type" content="website" />
+  </head>
+  <body><slot /></body>
+</html>
