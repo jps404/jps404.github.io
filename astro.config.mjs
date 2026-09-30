@@ -1,7 +1,7 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://www.jedsolomon.com',
+  site: 'https://jps404.github.io',
   output: 'static',
   trailingSlash: 'always',
   build: { inlineStylesheets: 'always', format: 'directory' },
